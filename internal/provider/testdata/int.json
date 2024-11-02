@@ -1,0 +1,13 @@
+{
+  "id": "test-integer-value",
+  "enabled": true,
+  "description": "test integer value",
+  "default_variant": "one",
+  "variants": {
+    "one": {
+      "int": {
+        "value": 1
+      }
+    }
+  }
+}

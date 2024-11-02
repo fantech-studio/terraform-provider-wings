@@ -1,0 +1,36 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: dorny/paths-filter@v3.0.2
+        id: changes
+        with:
+          filters: |
+            src:
+              - "**/*.go"
+
+      - if: steps.changes.outputs.src == 'true'
+        name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - if: steps.changes.outputs.src == 'true'
+        name: Setup Go
+        uses: actions/setup-go@v5.1.0
+        with:
+          go-version: '1.23.2'
+
+      - if: steps.changes.outputs.src == 'true'
+        name: Test
+        run: make testacc

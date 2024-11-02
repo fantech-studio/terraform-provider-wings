@@ -1,0 +1,36 @@
+{
+  "id": "test-json-value",
+  "enabled": true,
+  "description": "test json value",
+  "default_variant": "json",
+  "variants": {
+    "object": {
+      "object": {
+        "value": {
+          "items": [
+            {
+              "viewable": true,
+              "content": "content1"
+            },
+            {
+              "viewable": true,
+              "content": "content2"
+            },
+            {
+              "viewable": false,
+              "content": "content3"
+            }
+          ]
+        },
+        "transforms": [
+          {
+            "expr": "{\"items\":items.map(item, item.viewable ? item : item.deleteKey([\"content\"]))}"
+          },
+          {
+            "expr": "{\"items\":items.map(item, item.viewable ? item.selectKey([\"content\"]) : item)}"
+          }
+        ]
+      }
+    }
+  }
+}

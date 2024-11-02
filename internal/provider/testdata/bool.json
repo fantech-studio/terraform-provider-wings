@@ -1,0 +1,39 @@
+{
+  "id": "test-bool-value",
+  "enabled": true,
+  "description": "test bool value",
+  "default_variant": "off",
+  "variants": {
+    "on": {
+      "bool": {
+        "value": true
+      }
+    },
+    "off": {
+      "bool": {
+        "value": false
+      }
+    }
+  },
+  "targeting": {
+    "rules": [
+      {
+        "variant": "on",
+        "expr": "env == 'dev'"
+      },
+      {
+        "variant": "on",
+        "expr": "userId == 'XXX'"
+      }
+    ]
+  },
+  "tests": [
+    {
+      "variables": {
+        "env": "test",
+        "count": 1
+      },
+      "expected": "on"
+    }
+  ]
+}

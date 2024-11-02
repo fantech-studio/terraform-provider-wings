@@ -1,0 +1,13 @@
+{
+  "id": "test-string-value",
+  "enabled": true,
+  "description": "test string value",
+  "default_variant": "key",
+  "variants": {
+    "key": {
+      "string": {
+        "value": "test value"
+      }
+    }
+  }
+}
