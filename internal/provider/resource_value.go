@@ -281,7 +281,7 @@ func (v *valueResource) value() (*model.Value, error) {
 		})
 	}
 	value := &model.Value{
-		ID:             v.ID.ValueString(),
+		ID:             v.ValueID.ValueString(),
 		Enabled:        v.Enabled.ValueBool(),
 		Description:    v.Description.ValueString(),
 		DefaultVariant: v.DefaultVariant.ValueString(),
